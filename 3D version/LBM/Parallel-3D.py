@@ -159,7 +159,8 @@ def run(Iter, start, end):
             print('Iter: {} Runtime: {:.5f} sec'.format(t+1, time.time() - start))
             start = time.time() 
 
-    return rho.numpy(), rho_l, rho_a, filled
+    # return rho.numpy(), rho_l, rho_a, filled
+    return rho.numpy(), rho_l, filled
 
 
 if __name__ == '__main__':
@@ -168,23 +169,24 @@ if __name__ == '__main__':
     
     a = time.time()    
     with tf.device('/device:gpu:0'):
-        rho, rho_left, rho_accu, _ = run(Iter, 0, 2)
+        # rho, rho_left, rho_accu, _ = run(Iter, 0, 2)
+        rho, rho_left, _ = run(Iter, 0, args.n)
     b = time.time()
     
     print('Total Runtime: {} sec'.format(b-a))
     
-    rho_diff = []
-    for i in range (Iter):
-        rho_diff.append(rho_accu[i+1] - rho_accu[i])
+    # rho_diff = []
+    # for i in range (Iter):
+    #     rho_diff.append(rho_accu[i+1] - rho_accu[i])
     
     rho_left = np.array(rho_left)
-    rho_accu = np.array(rho_accu)
-    rho_diff = np.array(rho_diff)
+    # rho_accu = np.array(rho_accu)
+    # rho_diff = np.array(rho_diff)
     
     np.save(path+'rho.npy', rho)
     np.save(path+'rho_left.npy', rho_left)
-    np.save(path+'rho_accu.npy', rho_accu)
-    np.save(path+'rho_diff.npy', rho_diff)
+    # np.save(path+'rho_accu.npy', rho_accu)
+    # np.save(path+'rho_diff.npy', rho_diff)
     
     print('Saved !')
 
