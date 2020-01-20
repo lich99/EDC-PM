@@ -94,10 +94,10 @@ def run(Iter, start, end):
     filled = np.zeros((n, lx+2, ly+2, lz+2))
     
     filled[:, 1:-1, 1:-1, 1:-1] = filled_temp
-    filled[:, :, 0, :] = 1
-    filled[:, :, -1, :] = 1
-    filled[:, :, :, 0] = 1
-    filled[:, :, :, -1] = 1
+    filled[:, 1:, 0, :] = 1
+    filled[:, 1:, -1, :] = 1
+    filled[:, 1:, :, 0] = 1
+    filled[:, 1:, :, -1] = 1
     
     drug = np.zeros((n, lx+2, ly+2, lz+2))
     drug[:, 0, :, :] = 1

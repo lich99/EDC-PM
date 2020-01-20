@@ -75,8 +75,8 @@ def run(Iter, start, end):
 
     filled = np.zeros((n, lx+2, ly+2))
     filled[:, 1:-1, 1:-1] = filled_temp
-    filled[:, 0, :] = 1
-    filled[:, -1, :] = 1
+    filled[:, 0, 1:] = 1  # set the third dimension start from 1
+    filled[:, -1, 1:] = 1 # set the third dimension start from 1
     drug = np.zeros((n, lx+2, ly+2))
     drug[:, :, 0] = 1
 
