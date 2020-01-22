@@ -165,7 +165,7 @@ def run(Iter, start, end):
 
 if __name__ == '__main__':
     
-    Iter = 250000
+    Iter = 250
     
     a = time.time()    
     with tf.device('/device:gpu:0'):

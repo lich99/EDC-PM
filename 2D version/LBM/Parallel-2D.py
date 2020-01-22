@@ -137,10 +137,10 @@ def run(Iter, start, end):
 
 if __name__ == '__main__':
     
-    Iter = 250000
+    Iter = 250
     
     a = time.time()    
-    rho, rho_left, rho_accu, _ = run(Iter, 0, args.n)
+    rho, rho_left, rho_accu, _ = run(Iter, 0, 10)
     b = time.time()
     
     print('Total Runtime: {} sec'.format(b-a))
@@ -152,12 +152,12 @@ if __name__ == '__main__':
     rho_left = np.array(rho_left)
     rho_accu = np.array(rho_accu)
     rho_diff = np.array(rho_diff)
-    
+    '''
     np.save(path+'rho.npy', rho)
     np.save(path+'rho_left.npy', rho_left)
     np.save(path+'rho_accu.npy', rho_accu)
     np.save(path+'rho_diff.npy', rho_diff)
-    
+    '''
     print('Saved !')
 
 
